@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="DUMMY_TOKEN">
+
+    <title>Radio Station - Morning Vibes</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Figtree', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar-brand {
+            font-weight: 600;
+        }
+        
+        .category-card {
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-card img {
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .audio-player {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background-color: #fff;
+        }
+        
+        .audio-player audio {
+            width: 100%;
+        }
+        
+        .audio-list {
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .audio-item {
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+        }
+        
+        .audio-item:hover, .audio-item.active {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+        }
+        
+        footer {
+            padding: 40px 0;
+            margin-top: 60px;
+            background-color: #212529;
+            color: #fff;
+        }
+        
+        .category-header {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .category-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+        
+        .audio-cover {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Radio Station</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <!-- Guest Navigation Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.html">Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="py-4">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Morning Vibes</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bW9ybmluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="Morning Vibes">
+                        <div class="card-body">
+                            <h3 class="card-title">Morning Vibes</h3>
+                            <p class="card-text">Start your day with energetic and uplifting audio content perfect for your morning routine.</p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <i class="fas fa-headphones me-1"></i> 12 audio files
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0">Audio Files</h4>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="list-group list-group-flush">
+                                <!-- Audio Item 1 -->
+                                <a href="audio.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1612528443702-f6741f70a049?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80" class="me-3" width="60" height="60" alt="Morning Meditation">
+                                    <div>
+                                        <h5 class="mb-1">Morning Meditation</h5>
+                                        <p class="mb-1 text-muted small">
+                                            <i class="fas fa-user me-1"></i> Admin User
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-play-circle me-1"></i> 1,245 plays
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-clock me-1"></i> 10:15
+                                        </p>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </a>
+                                
+                                <!-- Audio Item 2 -->
+                                <a href="audio.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1470116945706-e6bf5d5a53ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=100&q=80" class="me-3" width="60" height="60" alt="Coffee Break Jazz">
+                                    <div>
+                                        <h5 class="mb-1">Coffee Break Jazz</h5>
+                                        <p class="mb-1 text-muted small">
+                                            <i class="fas fa-user me-1"></i> Admin User
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-play-circle me-1"></i> 978 plays
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-clock me-1"></i> 15:30
+                                        </p>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </a>
+                                
+                                <!-- Audio Item 3 -->
+                                <a href="audio.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW9ybmluZyUyMHJ1bnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=100&q=80" class="me-3" width="60" height="60" alt="Morning Run Mix">
+                                    <div>
+                                        <h5 class="mb-1">Morning Run Mix</h5>
+                                        <p class="mb-1 text-muted small">
+                                            <i class="fas fa-user me-1"></i> Admin User
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-play-circle me-1"></i> 689 plays
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-clock me-1"></i> 22:45
+                                        </p>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </a>
+                                
+                                <!-- Audio Item 4 -->
+                                <a href="audio.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1499346030926-9a72daac6c63?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YnJlYWtmYXN0JTIwdGltZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=100&q=80" class="me-3" width="60" height="60" alt="Breakfast Talk Show">
+                                    <div>
+                                        <h5 class="mb-1">Breakfast Talk Show</h5>
+                                        <p class="mb-1 text-muted small">
+                                            <i class="fas fa-user me-1"></i> Content Manager
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-play-circle me-1"></i> 532 plays
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-clock me-1"></i> 35:10
+                                        </p>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </a>
+                                
+                                <!-- Audio Item 5 -->
+                                <a href="audio.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1506968695017-764f86a9f9ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8eW9nYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=100&q=80" class="me-3" width="60" height="60" alt="Morning Yoga Session">
+                                    <div>
+                                        <h5 class="mb-1">Morning Yoga Session</h5>
+                                        <p class="mb-1 text-muted small">
+                                            <i class="fas fa-user me-1"></i> Admin User
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-play-circle me-1"></i> 423 plays
+                                            <span class="mx-2">|</span>
+                                            <i class="fas fa-clock me-1"></i> 28:15
+                                        </p>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="mb-4">You Might Also Like</h3>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 category-card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Evening Talks">
+                        <div class="card-body">
+                            <h5 class="card-title">Evening Talks</h5>
+                            <p class="card-text">
+                                Relax and unwind with thought-provoking discussions.
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <a href="category.html" class="btn btn-primary w-100">
+                                <i class="fas fa-play-circle me-1"></i> Listen Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 category-card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Meditation">
+                        <div class="card-body">
+                            <h5 class="card-title">Meditation</h5>
+                            <p class="card-text">
+                                Find peace and tranquility with guided meditations.
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <a href="category.html" class="btn btn-primary w-100">
+                                <i class="fas fa-play-circle me-1"></i> Listen Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 category-card shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Storytelling">
+                        <div class="card-body">
+                            <h5 class="card-title">Storytelling</h5>
+                            <p class="card-text">
+                                Get lost in captivating stories and narratives.
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <a href="category.html" class="btn btn-primary w-100">
+                                <i class="fas fa-play-circle me-1"></i> Listen Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Radio Station</h5>
+                    <p>Your one-stop destination for all your favorite audio content.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a class="text-white" href="index.html">Home</a></li>
+                        <li><a class="text-white" href="login.html">Login</a></li>
+                        <li><a class="text-white" href="register.html">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 Radio Station. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Simple script to handle audio item clicks
+        document.querySelectorAll('.audio-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                document.querySelectorAll('.audio-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('i').classList.remove('text-primary');
+                    i.querySelector('i').classList.add('text-muted');
+                    i.querySelector('i').classList.remove('fa-volume-up');
+                    i.querySelector('i').classList.add('fa-play');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                this.querySelector('i').classList.add('text-primary');
+                this.querySelector('i').classList.remove('text-muted');
+                this.querySelector('i').classList.remove('fa-play');
+                this.querySelector('i').classList.add('fa-volume-up');
+                
+                // Update player (in a real app, this would change the audio source)
+                // For demo purposes, we'll just update the title and image
+                const title = this.querySelector('h6').innerText;
+                const imgSrc = this.querySelector('img').src;
+                
+                document.querySelector('.audio-player h3').innerText = title;
+                document.querySelector('.audio-cover').src = imgSrc;
+            });
+        });
+    </script>
+</body>
+</html>
