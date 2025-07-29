@@ -2,13 +2,13 @@
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](screenshots/home-page.png)
+![Home Page](screenshots/Home.png)
 ### Category View
-![Category View](screenshots/category-view.png)
-### Audio Player
-![Audio Player](screenshots/audio-player.png)
+![Category View](screenshots/Category.png)
 ### Audio List
-![Audio List](screenshots/audio-list.png)
+![Audio List](screenshots/Song.png)
+### Audio Play
+![Audio Play](screenshots/Song-Play.png)
 
 A simple and modern web application for managing online radio stations, built with Laravel. This system provides comprehensive audio management, dynamic playback features, and an intuitive admin interface.
 
