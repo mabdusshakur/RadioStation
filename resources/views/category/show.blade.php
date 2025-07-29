@@ -4,7 +4,7 @@
     <div class="row mb-4">
         <div class="col-md-4 mb-4 mb-md-0">
             <div class="card shadow-sm h-100">
-                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bW9ybmluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                <img src="{{ Storage::url($category->cover_image) }}"
                     class="card-img-top" alt="Morning Vibes">
                 <div class="card-body">
                     <h3 class="card-title">{{ $category->name }}</h3>
@@ -56,7 +56,7 @@
         @foreach ($relatedCategories as $category)
                <div class="col-md-4 mb-4">
             <div class="card h-100 category-card shadow-sm">
-                <img src="{{ Storage::url($category->image) }}"
+                <img src="{{ Storage::url($category->cover_image) }}"
                     class="card-img-top" alt="Evening Talks">
                 <div class="card-body">
                     <h5 class="card-title">{{$category->name}}</h5>
